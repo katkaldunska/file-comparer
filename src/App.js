@@ -1,4 +1,4 @@
-import React, { Component, Modal } from 'react';
+import React, { Component } from 'react';
 import Cells from './Cells/Cells';
 
 class App extends Component {
@@ -22,7 +22,8 @@ class App extends Component {
   };
 
   render() {
-
+    if(!this.state.languages.length)
+                return null;
     return (
       <div>
         <h2> File upload </h2>
