@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-// import {FileUpload} from './FileUpload';
+import React, { Component, Modal } from 'react';
+import Cells from './Cells/Cells';
 
 class App extends Component {
   state = {
@@ -21,32 +21,13 @@ class App extends Component {
     .then(response => response.json());
   };
 
-  createTable = () => {
-    let table = [];
-    var divStyle = {
-      color: 'black'
-    };
-    const langs = this.state.languages;
-    const translation = this.state.translation;
-    Object.keys(translation).forEach(key =>
-  {    if (translation[key]){
-          table.push(<div key={key} id={key}>
-            <div style={divStyle}>{translation[key][0][langs[0]]} </div>
-            <div>{translation[key][0][langs[1]]} </div>
-          </div>)
-}}
-    )
-    return table;
-  }
-
   render() {
 
     return (
       <div>
         <h2> File upload </h2>
-          {this.createTable()}
+        <Cells translation = {this.state.translation} languages = {this.state.languages}/>
       </div>
-
     );
   }
 }
