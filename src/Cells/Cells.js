@@ -1,5 +1,5 @@
 import React  from 'react';
-import CustomButton from '../CustomButton';
+import CustomButton from '../CustomButton/CustomButton';
 import './Cells.css';
 
 const redBackground = {
@@ -63,7 +63,7 @@ export default class Cells extends React.Component {
               suppressContentEditableWarning
               lang={langs[1]}
               onBlur={e => {
-                this.props.translation[key][0][langs[1]] = e.target.innerHTML;
+                this.props.translation[key][1][langs[1]] = e.target.innerHTML;
                 this.forceUpdate();
               }}
               {...rigthDivProps}

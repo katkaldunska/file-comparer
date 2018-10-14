@@ -1,6 +1,5 @@
 import React  from 'react';
 import Dropzone from 'react-dropzone';
-// import request from 'request';
 import request from 'superagent';
 
 export default class FileUploader extends React.Component {

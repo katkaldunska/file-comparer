@@ -45,7 +45,7 @@ class App extends Component {
       <div className="App">
         <FileUploader/>
         <Button bsstyle='link' onClick={() => { this.uploadDefaultFiles() }}>
-          Załaduj pliki
+          Załaduj zawartość plików
         </Button>
         <CleanButton/>
         { Object.keys(this.state.translation).length > 0 &&
