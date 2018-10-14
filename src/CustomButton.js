@@ -24,6 +24,8 @@ downloadJsonFile = () => {
         }
       });
     });
+    // var Type = require('js-binary');
+    // Type.
 
     const downloadLink = document.createElement("a");
     const file = new Blob([JSON.stringify(content)], {type: 'text/plain'});
@@ -49,6 +51,7 @@ downloadJsonFile = () => {
     const { isLoading } = this.state;
     return (
       <button
+        className='btn btn-primary'
         disabled={isLoading}
         onClick={!isLoading ? this.handleClick : null}
       >

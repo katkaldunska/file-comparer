@@ -1,6 +1,6 @@
 const express = require('express');
-
 const FileReader = require('./FileReader');
+const uploads = require('./uploads');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,11 +12,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/hello', (req, res) => {
+app.get('/defaultFiles', (req, res) => {
   FileReader.parseFiles()
     .then(data => res.send(data))
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    });
 });
+
+app.use('/uploads', uploads);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

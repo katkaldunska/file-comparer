@@ -21,7 +21,12 @@ class FileReader {
         for (let file of files) {
           const filepath = `${testFolder}${file}`;
           const data = await FileReader.readFile(filepath);
-          const dataParsed = JSON.parse(data);
+          let dataParsed = '';
+          try {
+            dataParsed = JSON.parse(data);
+          } catch (err) {
+            reject(new Error('Incorrect file or file has errors'));
+          }
 
           Object.keys(dataParsed).forEach(key => {
             if (!translation[key]) {
@@ -34,6 +39,7 @@ class FileReader {
        });
     });
   }
+  
 }
 
 module.exports = FileReader;
