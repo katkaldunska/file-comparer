@@ -19,21 +19,28 @@ class App extends Component {
   };
 
   uploadDefaultFiles = () => {
-    this.setState({ error: false });
     this.callApi()
       .then(res => {
         if (res.files && res.files.length !== 2) {
           this.setState({
             error: true,
-            errorMessage: `Na serwerze znajduje się liczba plików inna niż 2: ${res.files.length}`
+            errorMessage: `Na serwerze znajduje się liczba plików inna niż 2: ${res.files.length}`,
+            translation: {},
+            languages: []
           });
         } else if (!!res.translation) {
-          this.setState({ translation: res.translation });
-          this.setState({ languages: res.files });
+          this.setState({
+            translation: res.translation,
+            languages: res.files,
+            error: false,
+            errorMessage: ''
+          });
         } else {
           this.setState({
             error: true,
-            errorMessage: 'Uszkodzone pliki na serwerze'
+            errorMessage: 'Uszkodzone pliki na serwerze',
+            translation: {},
+            languages: []
           });
         }
       })
